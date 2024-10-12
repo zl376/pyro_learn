@@ -4,7 +4,8 @@ __pycache__/
 *$py.class
 
 # Virtual environment
-venv/
+.venv/
+.python-version
 
 # IDE files
 .vscode/
@@ -12,6 +13,7 @@ venv/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
 
 # macOS
 .DS_Store
