@@ -10,7 +10,8 @@ def run_inference(model, x, y, num_iterations=1000):
     # Setup the optimizer and the inference algorithm
     adam_params = {"lr": 0.03, "betas": (0.90, 0.999)}
     optimizer = Adam(adam_params)
-    svi = SVI(model, guide=AutoNormal(model), loss=Trace_ELBO(), optim=optimizer)
+    guide=AutoNormal(model)
+    svi = SVI(model, guide=guide, loss=Trace_ELBO(), optim=optimizer)
 
     # Do gradient steps
     for step in range(num_iterations):
@@ -18,4 +19,4 @@ def run_inference(model, x, y, num_iterations=1000):
         if step % 100 == 0:
             print(f"Elbo loss: {loss}")
 
-    return svi
+    return svi, guide
